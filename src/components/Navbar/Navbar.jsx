@@ -11,7 +11,7 @@ export const Navlinks = [
   },
   {
     id: 2,
-    name: "Bikes",
+    name: "BIKE",
     link: "/#bikes",
   },
   {
@@ -21,7 +21,7 @@ export const Navlinks = [
   },
   {
     id: 1,
-    name: "Booking",
+    name: "BOOKING",
     link: "/#booking",
   },
 ];
