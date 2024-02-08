@@ -7,19 +7,19 @@ import PCX from "../../assets/PCX.png";
 const carList = [
   {
     name: "Tamx",
-    price: 100,
+    price: 1500,
     image: Tmax,
     aosDelay: "0",
   },
   {
     name: "Xadv",
-    price: 140,
+    price: 1400,
     image2: XADV,
     aosDelay: "500",
   },
   {
     name: "PCX",
-    price: 100,
+    price: 300,
     image3: PCX,
     aosDelay: "1000",
   },
@@ -34,11 +34,16 @@ const CarList = () => {
           data-aos='fade-up'
           className='text-3xl sm:text-4xl font-semibold font-serif mb-3'
         >
-          Lorem ipsum dolor
+          Auto Motor Bikes
         </h1>
         <p data-aos='fade-up' aos-delay='400' className='text-sm pb-10'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor iure
-          nemo ab?
+          The PCX, XADV, and Tmax are innovative auto motorbikes designed for
+          diverse riding needs. The PCX, known for its urban efficiency, offers
+          practicality and style, ideal for city commuting. The XADV blends
+          scooter convenience with adventure motorcycle capabilities, promising
+          versatility on various terrains. Yamaha's Tmax stands out with its
+          sporty performance and touring capabilities, making it a preferred
+          choice for long-distance riders seeking both agility and comfort.
         </p>
         {/* Car listing */}
         <div>
@@ -59,12 +64,12 @@ const CarList = () => {
                 <div className='space-y-2'>
                   <h1 className='text-primary font-semibold'>{data.name}</h1>
                   <div className='flex justify-between items-center text-xl font-semibold'>
-                    <p>${data.price}/Day</p>
+                    <p> ฿{data.price}/Day</p>
                     <a href='#'>Details</a>
                   </div>
                 </div>
                 <p className='text-xl font-semibold absolute top-0 left-3'>
-                  12Km
+                  20Km
                 </p>
               </div>
             ))}
