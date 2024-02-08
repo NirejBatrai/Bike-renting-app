@@ -1,5 +1,5 @@
 import React from "react";
-import CarPng from "../../assets/XADV.png";
+import XADV from "../../assets/XADV.png";
 
 const About = () => {
   return (
@@ -8,7 +8,7 @@ const About = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center'>
           <div data-aos='slide-right' data-aos-duration='1500'>
             <img
-              src={CarPng}
+              src={XADV}
               alt=''
               className='sm:scale-125 sm:-translate-x-11 max-h-[300px] drop-shadow-[2px_10px_6px_rgba(0,0,0,0.50)]'
             />
@@ -21,15 +21,23 @@ const About = () => {
               >
                 About us
               </h1>
-              <p data-aos='fade-up' className='leading-8 tracking-wide'>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, magnam! Tenetur odio quo et maxime?
+              <p data-aos='fade-down' className='leading-8 tracking-wide'>
+                Welcome to Our Bike Rental Service! We're dedicated to making
+                biking accessible and enjoyable for everyone. With top-quality
+                bikes and personalized service, we aim to provide memorable
+                experiences for riders of all levels. Whether you're a casual
+                cyclist or an adventure seeker, join us as we pedal towards new
+                horizons and unforgettable moments on the road!
               </p>
               <p data-aos='fade-up'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                tempora.
+                At Our Bike Rental Service, we believe that exploration is the
+                essence of adventure. Our mission is to equip you with the tools
+                and support you need to embark on thrilling journeys, discover
+                new horizons, and create lasting memories. Join us as we pedal
+                towards excitement, exploration, and the freedom of the open
+                road!
               </p>
-              <button data-aos='fade-up' className='button-outline'>
+              <button data-aos='fade-down' className='button-outline'>
                 Get Started
               </button>
             </div>
