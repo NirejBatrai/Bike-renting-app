@@ -35,8 +35,10 @@ const Hero = ({ theme }) => {
               Motor Bike Rental
             </h1>
             <p data-aos='fade-up' data-aos-delay='1000'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              veritatis explicabo quibusdam quae reprehenderit ab{" "}
+              Welcome to our bike rental service! Get ready to explore scenic
+              routes with our top-quality bikes. Whether you're a seasoned rider
+              or new to biking, we've got you covered. Let's make your biking
+              experience unforgettable!
             </p>
             <button
               data-aos='fade-up'
