@@ -12,6 +12,7 @@ import AppStoreBanner from "./components/AppStoreBanner/AppStoreBanner";
 import Contact from "./components/Contact/Contact";
 import Testimonial from "./components/Testimonial/Testimonial";
 import Footer from "./components/Footer/Footer";
+// import Pricing from "./components/BIkes/Pricing";
 
 const App = () => {
   // dark mode start
@@ -41,7 +42,7 @@ const App = () => {
     AOS.refresh();
   }, []);
   return (
-    <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
+    <div className='bg-white dark:bg-black dark:text-white text-black overflow-x-hidden'>
       <Navbar theme={theme} setTheme={setTheme} />
       <Hero theme={theme} />
       <About />
@@ -51,6 +52,10 @@ const App = () => {
       <AppStoreBanner />
       <Contact />
       <Footer />
+      {/* <Route>
+    
+        <Route path='/pricing' element={<Pricing />} />
+      </Route> */}
     </div>
   );
 };
