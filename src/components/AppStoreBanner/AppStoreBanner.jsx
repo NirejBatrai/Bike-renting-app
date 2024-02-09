@@ -1,6 +1,6 @@
 import React from "react";
-import AppStoreImg from "../../assets/website/app_store.png";
-import PlayStoreImg from "../../assets/website/play_store.png";
+import AppStoreImg from "../../assets/app_store.png";
+import PlayStoreImg from "../../assets/play_store.png";
 import background from "../../assets/background.png";
 
 const bannerImg = {
