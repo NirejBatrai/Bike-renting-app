@@ -7,6 +7,11 @@ const Hero = ({ theme }) => {
   useEffect(() => {
     AOS.refresh();
   });
+
+  useEffect(() => {
+    AOS.refresh();
+  });
+
   return (
     <div className='dark:bg-black dark:text-white duration-300 '>
       <div className='container min-h-[620px] flex'>
