@@ -9,22 +9,27 @@ import {
 
 const FooterLinks = [
   {
+    id: 1,
     title: "Home",
     link: "/#",
   },
   {
+    id: 2,
     title: "About",
     link: "/#about",
   },
   {
+    id: 3,
     title: "Contact",
     link: "/#contact",
   },
   {
+    id: 4,
     title: "Blog",
     link: "/#blog",
   },
 ];
+
 const Footer = () => {
   return (
     <div className='bg-gray-100 dark:bg-dark mt-14 rounded-t-3xl'>
@@ -83,10 +88,10 @@ const Footer = () => {
                 <h1 className='sm:text-xl text-xl font-bold sm:text-left text-justify mb-3'>
                   Links
                 </h1>
-                <ul className='flex flex-col gap-3'>
-                  {FooterLinks.map((link, index) => (
+                <ul className={`flex flex-col gap-3`}>
+                  {FooterLinks.map((link) => (
                     <li
-                      key={index}
+                      key={link.id}
                       className='cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-500 dark:text-gray-200'
                     >
                       <span>&#11162;</span>
