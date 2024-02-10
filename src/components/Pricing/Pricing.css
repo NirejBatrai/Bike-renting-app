@@ -20,31 +20,46 @@
   flex-wrap: wrap;
   flex-basis: calc(50% - 10px);
 }
-.input-wrapper {
-  width: 35%;
-  height: 2.5rem;
-  border: none;
-  border-radius: 10px;
-  padding: 0 15px;
-  box-shadow: 0px 0px 8px #ddd;
-  background-color: white;
-  display: flex;
-  align-items: center;
+.input-container {
+  width: 220px;
+  position: relative;
 }
 
-input {
-  background-color: transparent;
-  border: none;
-  height: 100%;
-  font-size: 1.25rem;
-  width: 100%;
-  margin-left: 5px;
+.icon {
+  position: absolute;
+  right: -320px;
+  top: calc(50% + 5px);
+  transform: translateY(calc(-50% - 5px));
 }
 
-input:focus {
+.input {
+  width: 250%;
+  height: 40px;
+  padding: 20px;
+  transition: 0.2s linear;
+  border: 2.5px solid black;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.input:focus {
   outline: none;
+  border: 0.5px solid black;
+  box-shadow: -5px -5px 0px black;
 }
 
-#search-icon {
-  color: royalblue;
+.input-container:hover > .icon {
+  animation: anim 1s linear infinite;
+}
+
+@keyframes anim {
+  0%,
+  100% {
+    transform: translateY(calc(-50% - 5px)) scale(1);
+  }
+
+  50% {
+    transform: translateY(calc(-50% - 5px)) scale(1.1);
+  }
 }
