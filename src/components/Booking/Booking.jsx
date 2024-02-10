@@ -5,37 +5,30 @@ import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
 
 const Booking = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    date: "",
-    time: "",
-    message: "",
-  });
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [message, setMessage] = useState();
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      await axios.post("/api/bookings", formData);
-      alert("Booking successful!");
-      setFormData({
-        name: "",
-        email: "",
-        date: "",
-        time: "",
-        message: "",
+  const sendMail = () => {
+    axios
+      .get("http://localhost:5000/", {
+        params: {
+          name,
+          email,
+          date,
+          time,
+          message,
+        },
+      })
+      .then(() => {
+        console.log("succes");
+      })
+      .catch(() => {
+        console.log("failure");
       });
-    } catch (error) {
-      console.error(error);
-      alert("Booking failed. Please try again.");
-    }
   };
-
   const scaleIn = useSpring({
     transform: "scale(1)",
     from: { transform: "scale(0)" },
@@ -64,7 +57,7 @@ const Booking = () => {
         <h1 className='text-4xl font-bold mb-4 text-center'>
           Motor Bike Booking
         </h1>
-        <form className='space-y-6' onSubmit={handleSubmit}>
+        <form className='space-y-6'>
           <div className='grid grid-cols-2 gap-6'>
             <div>
               <label
@@ -78,9 +71,8 @@ const Booking = () => {
                 id='name'
                 name='name'
                 type='text'
-                placeholder='John Doe'
-                value={formData.name}
-                onChange={handleChange}
+                placeholder='Your Name'
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
@@ -97,8 +89,7 @@ const Booking = () => {
                 name='email'
                 type='email'
                 placeholder='johndoe@example.com'
-                value={formData.email}
-                onChange={handleChange}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -115,8 +106,7 @@ const Booking = () => {
               id='date'
               name='date'
               type='date'
-              value={formData.date}
-              onChange={handleChange}
+              onChange={(e) => setDate(e.target.value)}
               required
             />
           </div>
@@ -132,8 +122,7 @@ const Booking = () => {
               id='time'
               name='time'
               type='time'
-              value={formData.time}
-              onChange={handleChange}
+              onChange={(e) => setTime(e.target.value)}
               required
             />
           </div>
@@ -149,13 +138,12 @@ const Booking = () => {
               id='message'
               name='message'
               placeholder='Enter your message here...'
-              value={formData.message}
-              onChange={handleChange}
+              onChange={(e) => setMessage(e.target.value)}
               required
             />
           </div>
           <div>
-            <button type='submit' className='button'>
+            <button type='submit' className='button' onClick={sendMail}>
               <span> Submit</span>
             </button>
           </div>
