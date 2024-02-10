@@ -1,0 +1,10 @@
+.BikeDetails-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.BikeDetails-container p {
+  max-width: 800px;
+}
