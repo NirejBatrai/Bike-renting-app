@@ -1,0 +1,50 @@
+.card-holder {
+  margin: 40px;
+  padding: 20px;
+  width: 300px;
+  height: 400px; /* Set a fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-content {
+  flex: 1; /* Allow the content to grow to fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-content h1,
+.card-content p {
+  padding: 0 15px;
+  text-align: center;
+  margin: 0; /* Remove default margin to avoid spacing issues */
+  font-size: large;
+}
+
+.card-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.button-style {
+  background-color: #08222e;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
