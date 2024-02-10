@@ -3,8 +3,9 @@ import Tmax from "../../assets/Tmax.png";
 import XADV from "../../assets/XADV.png";
 
 import PCX from "../../assets/PCX.png";
+import { Link } from "react-router-dom";
 
-const carList = [
+const bikeList = [
   {
     name: "Tamx",
     price: 1500,
@@ -48,7 +49,7 @@ const CarList = () => {
         {/* Car listing */}
         <div>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16'>
-            {carList.map((data, index) => (
+            {bikeList.map((data, index) => (
               <div
                 key={index}
                 data-aos='fade-up'
@@ -78,9 +79,11 @@ const CarList = () => {
         </div>
         {/* End of car listing */}
         <div className='grid place-items-center mt-8'>
-          <button data-aos='fade-up' className='button-outline'>
-            Get Started
-          </button>
+          <Link to='/pricing'>
+            <button data-aos='fade-up' className='button-outline'>
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
     </div>
