@@ -1,5 +1,6 @@
 import React from "react";
 import XADV from "../../assets/XADV.png";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -20,7 +21,7 @@ const About = () => {
                 className='text-3xl sm:text-4xl font-bold font-serif'
               >
                 About us
-              </h1>
+              </h1>{" "}
               <p data-aos='fade-down' className='leading-8 tracking-wide'>
                 Welcome to Our Bike Rental Service! We're dedicated to making
                 biking accessible and enjoyable for everyone. With top-quality
@@ -37,9 +38,11 @@ const About = () => {
                 towards excitement, exploration, and the freedom of the open
                 road!
               </p>
-              <button data-aos='fade-down' className='button-outline'>
-                Get Started
-              </button>
+              <Link to='/about'>
+                <button data-aos='fade-down' className='button-outline'>
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         </div>
