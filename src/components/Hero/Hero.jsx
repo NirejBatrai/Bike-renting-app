@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
+
 import Xmaxx from "../../assets/Xmaxx.png";
 import XADV from "../../assets/XADV.png";
 import AOS from "aos";
+import { Link } from "react-router-dom";
+import About from "../../components/About/About";
+import Services from "../../components/Services/Services";
+import CarList from "../../components/CarList/CarList";
+import Contact from "../../components/Contact/Contact";
+import Testimonial from "../../components/Testimonial/Testimonial";
 
 const Hero = ({ theme }) => {
   useEffect(() => {
     AOS.refresh();
-  });
+  }, []);
 
   return (
     <div className='dark:bg-black dark:text-white duration-300 '>
@@ -41,19 +48,27 @@ const Hero = ({ theme }) => {
               or new to biking, we've got you covered. Let's make your biking
               experience unforgettable!
             </p>
-            <button
-              data-aos='fade-up'
-              data-aos-delay='1500'
-              onClick={() => {
-                AOS.refreshHard();
-              }}
-              className='rounded-md bg-primary hover:bg-primary/80 transition duration-500 py-2 px-6 text-black'
-            >
-              Get Started
-            </button>
+            <Link to='/pricing'>
+              {" "}
+              <button
+                data-aos='fade-up'
+                data-aos-delay='1500'
+                onClick={() => {
+                  AOS.refreshHard();
+                }}
+                className='rounded-md bg-primary hover:bg-primary/80 transition duration-500 py-2 px-6 text-black'
+              >
+                Get Started
+              </button>
+            </Link>
           </div>
         </div>
       </div>
+      <About />
+      <Services />
+      <CarList />
+      <Testimonial />
+      <Contact />
     </div>
   );
 };
