@@ -13,13 +13,16 @@ const Booking = () => {
 
   const sendMail = () => {
     axios
-      .get("http://localhost:5000/", {
+      .get("http://localhost:5009/", {
         params: {
           name,
           email,
           date,
           time,
           message,
+          bikeName,
+          description,
+          imageSrc,
         },
       })
       .then(() => {
