@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import ResponsiveMenu from "./ResponsiveMenu";
 
 export const Navlinks = [
@@ -13,7 +12,7 @@ export const Navlinks = [
   {
     id: 2,
     name: "BIKE",
-    link: "/pricing", // Update link to "/pricing"
+    link: "/pricing",
   },
   {
     id: 3,
@@ -26,19 +25,19 @@ export const Navlinks = [
     link: "/booking",
   },
 ];
-const Navbar = ({ theme, setTheme }) => {
+
+const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
   return (
     <div className='relative z-10 shadow-md w-full dark:bg-black dark:text-white duration-300'>
       <div className='container py-2 md:py-0'>
         <div className='flex justify-between items-center'>
-          <Link
-            to={"/"} // Use Link component with 'to' attribute
-          >
+          <Link to={"/"}>
             <span className='text-3xl font-bold font-serif'>Bike Rental</span>
           </Link>
           <nav className='hidden md:block'>
@@ -46,41 +45,17 @@ const Navbar = ({ theme, setTheme }) => {
               {Navlinks.map(({ id, name, link }) => (
                 <li key={id} className='py-4'>
                   <Link
-                    to={link} // Use Link component with 'to' attribute
+                    to={link}
                     className=' text-lg font-medium  hover:text-primary py-2 hover:border-b-2 hover:border-primary transition-colors duration-500'
                   >
                     {name}
                   </Link>
                 </li>
               ))}
-              {/* DarkMode feature implement */}
-              {theme === "dark" ? (
-                <BiSolidSun
-                  onClick={() => setTheme("light")}
-                  className='text-2xl'
-                />
-              ) : (
-                <BiSolidMoon
-                  onClick={() => setTheme("dark")}
-                  className='text-2xl'
-                />
-              )}
             </ul>
           </nav>
           {/* Mobile view  */}
           <div className='flex items-center gap-4 md:hidden '>
-            {/* dark  mode */}
-            {theme === "dark" ? (
-              <BiSolidSun
-                onClick={() => setTheme("light")}
-                className='text-2xl'
-              />
-            ) : (
-              <BiSolidMoon
-                onClick={() => setTheme("dark")}
-                className='text-2xl'
-              />
-            )}
             {/* Mobile Hamburger icon */}
             {showMenu ? (
               <HiMenuAlt1
