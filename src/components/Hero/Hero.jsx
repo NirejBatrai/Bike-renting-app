@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import Xmaxx from "../../assets/Xmaxx.png";
 import XADV from "../../assets/XADV.png";
 import AOS from "aos";
 import { Link } from "react-router-dom";
 import About from "../../components/About/About";
 import Services from "../../components/Services/Services";
-import CarList from "../../components/CarList/CarList";
+import BikeList from "../../components/BikeList/BikeList";
 import Contact from "../../components/Contact/Contact";
 import Testimonial from "../../components/Testimonial/Testimonial";
 
-const Hero = ({ theme }) => {
+const Hero = () => {
   useEffect(() => {
     AOS.refresh();
   }, []);
 
   return (
-    <div className='dark:bg-black dark:text-white duration-300 '>
+    <div className='dark:bg-black dark:text-white duration-300'>
       <div className='container min-h-[620px] flex'>
         <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center'>
           <div
@@ -26,7 +25,7 @@ const Hero = ({ theme }) => {
             className='order-1 sm:order-2'
           >
             <img
-              src={theme === "dark" ? Xmaxx : XADV}
+              src={XADV}
               alt=''
               className='sm:scale-125 relative -z-10 max-h-[600px] drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]'
             />
@@ -66,7 +65,7 @@ const Hero = ({ theme }) => {
       </div>
       <About />
       <Services />
-      <CarList />
+      <BikeList />
       <Testimonial />
       <Contact />
     </div>
