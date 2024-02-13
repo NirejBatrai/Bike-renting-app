@@ -2,12 +2,31 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
-export default function BikeDetails() {
+export default function BikeDetails({ BikeData }) {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const imageSrc = params.get("imageSrc");
   const bikeName = params.get("bikeName");
-  const description = params.get("description");
+
+  const selectedBike = BikeData.find((bike) => bike.bikeName === bikeName);
+  const {
+    imageSrc,
+    description,
+    price,
+    cc,
+    speed,
+    seatHeight,
+    wheelbase,
+    engineType,
+    cylinderArrangement,
+    maxHorsepower,
+    lubricationSystem,
+    engineOilCapacity,
+    fuelTankCapacity,
+    steeringAngle,
+    brakeFront,
+    brakeBack,
+    maxSpeed,
+  } = selectedBike;
 
   const scaleIn = useSpring({
     transform: "scale(1)",
@@ -15,18 +34,85 @@ export default function BikeDetails() {
   });
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen'>
-      <h1 className='text-3xl font-bold mb-4'>Bike Details</h1>
-      <div className='w-100 h-100 mb-20 overflow-hidden rounded-lg shadow-xl'>
+    <div className='flex flex-col items-center justify-center min-h-screen BikeDetails-container'>
+      <h1 className='text-xl font-bold text-gray-900 mb-2'>Bike Details</h1>
+      <div className='booking-image mb-4'>
         <animated.img
           style={scaleIn}
           src={imageSrc}
           alt={bikeName}
-          className='w-full h-auto max-h-full'
+          className='w-full h-full object-cover'
         />
       </div>
-      <h2 className='text-xl font-bold mb-2'>{bikeName}</h2>
-      <p className='text-lg text-center'>{description}</p>
+      <h2 className='font-bold text-lg text-gray-900 mb-2 '>{bikeName}</h2>
+      <table className='table-auto max-w-s  ml-20 mr-20'>
+        <tbody>
+          <tr>
+            <td className='border px-2 py-1'>Description</td>
+            <td className='border px-2 py-1'>{description}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Price (฿)</td>
+            <td className='border px-2 py-1'>{price}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Engine Displacement (cc)</td>
+            <td className='border px-2 py-1'>{cc}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Speed (km/hr)</td>
+            <td className='border px-2 py-1'>{speed}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Seat Height</td>
+            <td className='border px-2 py-1'>{seatHeight}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Wheelbase</td>
+            <td className='border px-2 py-1'>{wheelbase}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Engine Type</td>
+            <td className='border px-2 py-1'>{engineType}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Cylinder Arrangement</td>
+            <td className='border px-2 py-1'>{cylinderArrangement}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Maximum Horsepower</td>
+            <td className='border px-2 py-1'>{maxHorsepower}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Lubrication System</td>
+            <td className='border px-2 py-1'>{lubricationSystem}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Engine Oil Capacity</td>
+            <td className='border px-2 py-1'>{engineOilCapacity}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Fuel Tank Capacity</td>
+            <td className='border px-2 py-1'>{fuelTankCapacity}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Steering Angle</td>
+            <td className='border px-2 py-1'>{steeringAngle}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Brake Front</td>
+            <td className='border px-2 py-1'>{brakeFront}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Brake Back</td>
+            <td className='border px-2 py-1'>{brakeBack}</td>
+          </tr>
+          <tr>
+            <td className='border px-2 py-1'>Maximun Speed</td>
+            <td className='border px-2 py-1'>{maxSpeed}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
