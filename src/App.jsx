@@ -17,6 +17,7 @@ import Booking from "./components/Booking/Booking";
 import BikeDetails from "./components/Details/BikeDetails";
 import About from "./components/About/About";
 
+import BikeData from "./components/BikeData/BikeData";
 const App = () => {
   // dark mode start
   const [theme, setTheme] = useState(
@@ -60,7 +61,11 @@ const App = () => {
         <Footer /> */}
           <Route path='/pricing' element={<Pricing />} />
           <Route path='/booking' element={<Booking />} />
-          <Route path='/bike-details' element={<BikeDetails />} />
+          <Route
+            path='/bike-details'
+            element={<BikeDetails BikeData={BikeData} />}
+          />
+
           <Route path='/about' element={<About />} />
         </Routes>
         <Footer />
