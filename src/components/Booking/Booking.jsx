@@ -50,8 +50,12 @@ const Booking = () => {
     <>
       {isFromPricing && (
         <div className='BikeDetails-container'>
-          <h1>Bike Details</h1>
-          <animated.img style={scaleIn} src={imageSrc} alt={bikeName} />
+          <animated.img
+            style={scaleIn}
+            src={imageSrc}
+            alt={bikeName}
+            className='booking-image'
+          />
           <h2>{bikeName}</h2>
           <p>{description}</p>
         </div>
