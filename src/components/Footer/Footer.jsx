@@ -41,8 +41,8 @@ const Footer = () => {
               Bike Rental
             </h1>
             <p className='text-sm'>
-              Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Possimus, voluptate.
+              Welcome to Bike Rental! We provide premium bikes for your
+              adventurous journey. Explore the world on two wheels with us.
             </p>
             <br />
             <div className='flex items-center gap-3'>
