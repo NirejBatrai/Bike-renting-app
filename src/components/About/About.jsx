@@ -30,14 +30,6 @@ const About = () => {
                 cyclist or an adventure seeker, join us as we pedal towards new
                 horizons and unforgettable moments on the road!
               </p>
-              <p data-aos='fade-up'>
-                At Our Bike Rental Service, we believe that exploration is the
-                essence of adventure. Our mission is to equip you with the tools
-                and support you need to embark on thrilling journeys, discover
-                new horizons, and create lasting memories. Join us as we pedal
-                towards excitement, exploration, and the freedom of the open
-                road!
-              </p>
               <Link to='/about'>
                 <button data-aos='fade-down' className='button-outline'>
                   Learn More
