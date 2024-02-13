@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
-import "./BikeDetails.css";
 
 export default function BikeDetails() {
   const location = useLocation();
@@ -16,13 +15,18 @@ export default function BikeDetails() {
   });
 
   return (
-    <div className='BikeDetails-container'>
-      <h1>Bike Details</h1>
-      <animated.img style={scaleIn} src={imageSrc} alt={bikeName} />
-      <h2>{bikeName}</h2>
-      <p>{description}</p>
-
-      {/* Additional details or components related to bike details */}
+    <div className='flex flex-col items-center justify-center h-screen'>
+      <h1 className='text-3xl font-bold mb-4'>Bike Details</h1>
+      <div className='w-100 h-100 mb-20 overflow-hidden rounded-lg shadow-xl'>
+        <animated.img
+          style={scaleIn}
+          src={imageSrc}
+          alt={bikeName}
+          className='w-full h-auto max-h-full'
+        />
+      </div>
+      <h2 className='text-xl font-bold mb-2'>{bikeName}</h2>
+      <p className='text-lg text-center'>{description}</p>
     </div>
   );
 }
