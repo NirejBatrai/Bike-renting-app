@@ -18,7 +18,7 @@ const BikeData = [
       "The PCX is a sleek and stylish scooter known for its fuel efficiency and smooth ride. It's powered by a 150cc engine, offering a perfect balance of performance and economy. With its comfortable seating and ample storage space, the PCX is ideal for urban commuting and short trips around town.",
     price: 350,
     cc: 150,
-    speed: "N/A",
+
     seatHeight: "760mm",
     wheelbase: "1310mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, single-cylinder",
@@ -32,7 +32,7 @@ const BikeData = [
     brakeBack: "Hydraulic disc brake",
     headlight: "LED",
     turnSignalLightFront: "LED",
-    maxSpeed: "100 km/h",
+    maxSpeed: "100km/h",
   },
   {
     imageSrc: Tmax,
@@ -41,7 +41,7 @@ const BikeData = [
       "The Tmax is a high-performance maxi-scooter designed for both urban commuting and longer journeys. It boasts a powerful 530cc engine, delivering exceptional acceleration and top speed. With its advanced features and comfortable riding position, the Tmax offers riders the perfect blend of power, comfort, and agility for conquering city streets and highways alike.",
     price: 1400,
     cc: 530,
-    speed: "N/A",
+
     seatHeight: "800mm",
     wheelbase: "1580mm",
     engineType: "Liquid-cooled, 4-stroke, DOHC, twin-cylinder",
@@ -64,7 +64,7 @@ const BikeData = [
       "The Xmax is a high-performance maxi-scooter designed for both urban commuting and longer journeys. It features a responsive 250cc engine, providing ample power for navigating through traffic and cruising on highways. With its spacious under-seat storage and ergonomic design, the Xmax offers riders a comfortable and enjoyable riding experience wherever they go.",
     price: 700,
     cc: 250,
-    speed: "N/A",
+
     seatHeight: "795mm",
     wheelbase: "1575mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, single-cylinder",
@@ -87,7 +87,7 @@ const BikeData = [
       "The XADV is a versatile adventure bike that combines the performance of a motorcycle with the practicality of a scooter. Equipped with a robust 750cc engine, it's capable of tackling both on-road and off-road adventures with ease. The XADV features long-travel suspension, rugged tires, and advanced rider aids, making it the perfect choice for exploring new horizons and conquering challenging terrain.",
     price: 1300,
     cc: 750,
-    speed: "N/A",
+
     seatHeight: "820mm",
     wheelbase: "1590mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, twin-cylinder",
@@ -110,7 +110,7 @@ const BikeData = [
       "The Kawasaki dirt bike is a true off-road machine built for adrenaline-fueled adventures. Powered by a high-performance 450cc engine, it offers explosive acceleration and precise handling in the toughest conditions. With its rugged chassis, adjustable suspension, and aggressive styling, the Kawasaki dirt bike is ready to conquer any trail or motocross track with confidence.",
     price: 900,
     cc: 450,
-    speed: "N/A",
+
     seatHeight: "955mm",
     wheelbase: "1485mm",
     engineType: "Liquid-cooled, 4-stroke, DOHC, single-cylinder",
@@ -133,7 +133,7 @@ const BikeData = [
       "The Harley-Davidson is an iconic American motorcycle known for its timeless design and legendary performance. With a massive 1140cc engine at its heart, it delivers thunderous torque and a commanding presence on the open road. The Harley-Davidson features classic styling, advanced technology, and customizable options, making it a symbol of freedom and adventure for riders worldwide.",
     price: 1400,
     cc: 1140,
-    speed: "N/A",
+
     seatHeight: "680mm",
     wheelbase: "1540mm",
     engineType: "Air-cooled, Evolution®, V-Twin",
@@ -156,7 +156,7 @@ const BikeData = [
       "The Honda Wave is a popular underbone motorcycle known for its reliability and fuel efficiency. It's equipped with a responsive 110cc engine, providing smooth acceleration and excellent fuel economy. With its lightweight design and agile handling, the Honda Wave is the perfect choice for daily commuting and short trips around town, offering riders an enjoyable and hassle-free riding experience.",
     price: 200,
     cc: 110,
-    speed: "N/A",
+
     seatHeight: "765mm",
     wheelbase: "1350mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, 4-valve",
@@ -179,7 +179,7 @@ const BikeData = [
       "The KTM 450 dirt bike is a championship-winning machine built for extreme off-road riding. Featuring a powerful 450cc engine and lightweight chassis, it offers unmatched agility and control on the most demanding trails. With its high-performance components, including suspension, brakes, and engine, the KTM 450 dirt bike sets the benchmark for off-road performance and durability, making it the weapon of choice for professional riders and enthusiasts alike.",
     price: 800,
     cc: 450,
-    speed: "N/A",
+
     seatHeight: "960mm",
     wheelbase: "1480mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, single-cylinder",
@@ -202,7 +202,7 @@ const BikeData = [
       "The PCX Red is a variant of the popular PCX scooter known for its vibrant color and stylish design. Powered by a reliable 150cc engine, it delivers responsive performance and excellent fuel efficiency. With its sleek bodywork and comfortable ergonomics, the PCX Red stands out from the crowd while offering riders a convenient and enjoyable mode of transportation for urban commuting and leisurely rides.",
     price: 350,
     cc: 150,
-    speed: "N/A",
+
     seatHeight: "760mm",
     wheelbase: "1310mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, single-cylinder",
@@ -225,7 +225,7 @@ const BikeData = [
       "The PCX White is a variant of the PCX scooter featuring a clean and elegant white color scheme. Equipped with a responsive 150cc engine, it offers smooth acceleration and nimble handling in urban traffic. With its spacious storage compartments and advanced features, including LED lighting and digital instrumentation, the PCX White combines style, comfort, and practicality for discerning riders looking for a premium commuting experience.",
     price: 350,
     cc: 150,
-    speed: "N/A",
+
     seatHeight: "760mm",
     wheelbase: "1310mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, single-cylinder",
@@ -248,7 +248,7 @@ const BikeData = [
       "The Nmax Yamaha is a premium scooter known for its sporty design and advanced features. Powered by a refined 155cc engine, it delivers impressive performance and fuel efficiency on city streets and highways. With its sleek bodywork, comfortable seating, and sophisticated electronics, including ABS and traction control, the Nmax offers riders a thrilling and confidence-inspiring riding experience, perfect for daily commuting and weekend getaways.",
     price: 400,
     cc: 155,
-    speed: "N/A",
+
     seatHeight: "765mm",
     wheelbase: "1350mm",
     engineType: "Liquid-cooled, 4-stroke, SOHC, 4-valve",
