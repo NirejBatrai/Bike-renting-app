@@ -1,6 +1,8 @@
 const express = require("express");
+const mysql = require("mysql");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+
 const app = express();
 const port = 5009;
 
@@ -10,6 +12,24 @@ app.use(express.urlencoded({ limit: "25mb" }));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
+});
+
+//Create a connection to mysql database
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "your_username",
+  password: "",
+  database: "bikedata",
+});
+
+//Connect to the mysql database
+connection.connect((err) => {
+  if (err) {
+    console.error("Error connecting to MySQL:", err);
+    return;
+  }
+
+  console.log("Connected to MySQL database");
 });
 
 function sendEmail({
@@ -27,12 +47,12 @@ function sendEmail({
       service: "gmail",
       auth: {
         user: "purampandey1234@gmail.com",
-        pass: "My_password",
+        pass: "mypss",
       },
       debug: true,
     });
 
-    const mail_configs = {
+    const mailConfigs = {
       from: email,
       to: "purampandey1234@gmail.com",
       subject: "Bike Booking Confirmation",
@@ -50,7 +70,7 @@ function sendEmail({
     `,
     };
 
-    transporter.sendMail(mail_configs, function (error, info) {
+    transporter.sendMail(mailConfigs, function (error, info) {
       if (error) {
         console.log(error);
         return reject({ message: `An error occured` });
