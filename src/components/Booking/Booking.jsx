@@ -33,7 +33,7 @@ const Booking = () => {
         setShowPopup(true);
         setTimeout(() => {
           setShowPopup(false);
-        }, 5000);
+        }, 1000);
       })
       .catch(() => {
         console.log("failure");
@@ -199,12 +199,12 @@ const Booking = () => {
                   🙏
                 </span>
               </p>
-              <button
+              {/* <button
                 className='bg-green-500 text-white py-2 px-4 rounded focus:outline-none focus:bg-green-600'
                 onClick={() => setShowPopup(false)}
               >
                 Close
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

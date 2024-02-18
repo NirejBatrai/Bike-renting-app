@@ -1,6 +1,7 @@
 import React from "react";
 
 import khem from "../../assets/khem.jpg";
+import yasu from "../../assets/yasuImage.png";
 
 const testimonialData = [
   {
@@ -12,7 +13,7 @@ const testimonialData = [
   },
   {
     name: "Yasu",
-    image: "",
+    image: { yasu },
     description:
       "From start to finish, renting bikes here was a breeze, enhancing our trip with smooth rides and scenic views.",
     aosDelay: "300",
