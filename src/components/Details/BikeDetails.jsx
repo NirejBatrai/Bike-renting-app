@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
-export default function BikeDetails({ BikeData }) {
+export default function BikeDetails() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const bikeName = params.get("bikeName");
 
-  const selectedBike = BikeData.find((bike) => bike.bikeName === bikeName);
+  const [selectedBike, setSelectedBike] = useState(null);
+  useEffect(() => {
+    fetch("http://localhost:5002/bikes_details")
+      .then((res) => res.json())
+      .then((data) => {
+        const foundBike = data.find((bike) => bike.bikeName === bikeName);
+        setSelectedBike(foundBike);
+      })
+      .catch((err) => console.log(err));
+  }, [bikeName]);
+
+  const scaleIn = useSpring({
+    transform: "scale(1)",
+    from: { transform: "scale(0)" },
+  });
+
+  if (!selectedBike) {
+    return <div>Loading....</div>;
+  }
   const {
     imageSrc,
     description,
@@ -27,11 +45,6 @@ export default function BikeDetails({ BikeData }) {
     brakeBack,
     maxSpeed,
   } = selectedBike;
-
-  const scaleIn = useSpring({
-    transform: "scale(1)",
-    from: { transform: "scale(0)" },
-  });
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen BikeDetails-container'>
