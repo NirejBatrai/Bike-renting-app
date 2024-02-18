@@ -10,10 +10,12 @@ const Booking = () => {
   const [message, setMessage] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
+  const [phone, setPhone] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const sendMail = () => {
     axios
-      .get("http://localhost:5009/", {
+      .get("http://localhost:5003/", {
         params: {
           name,
           email,
@@ -23,10 +25,15 @@ const Booking = () => {
           bikeName,
           description,
           imageSrc,
+          phone,
         },
       })
       .then(() => {
         console.log("succes");
+        setShowPopup(true);
+        setTimeout(() => {
+          setShowPopup(false);
+        }, 5000);
       })
       .catch(() => {
         console.log("failure");
@@ -36,6 +43,12 @@ const Booking = () => {
     transform: "scale(1)",
     from: { transform: "scale(0)" },
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevents the default form submission behavior
+    sendMail(); // Call the sendMail function to handle the form submission
+    setShowPopup(true); // Show the popup after form submission
+  };
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -64,7 +77,7 @@ const Booking = () => {
         <h1 className='text-4xl font-bold mb-4 text-center'>
           Motor Bike Booking
         </h1>
-        <form className='space-y-6'>
+        <form className='space-y-6' onSubmit={(e) => handleSubmit(e)}>
           <div className='grid grid-cols-2 gap-6'>
             <div>
               <label
@@ -100,6 +113,23 @@ const Booking = () => {
                 required
               />
             </div>
+          </div>
+          <div>
+            <label
+              className='block text-gray-700 font-bold mb-2'
+              htmlFor='phone'
+            >
+              Phone Number
+            </label>
+            <input
+              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
+              id='phone'
+              name='phone'
+              type='tel'
+              placeholder='Your Phone Number'
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
           </div>
           <div>
             <label
@@ -150,12 +180,35 @@ const Booking = () => {
             />
           </div>
           <div>
-            <button type='submit' className='button' onClick={sendMail}>
+            <button type='submit' className='button'>
               <span> Submit</span>
             </button>
           </div>
         </form>
       </div>
+      {showPopup && (
+        <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50'>
+          <div className='bg-white p-8 rounded-lg shadow-lg'>
+            <div className='text-center'>
+              <h2 className='text-xl font-bold mb-4 text-green-500'>
+                Thank You for Booking! 😃
+              </h2>
+              <p className='text-gray-700 mb-4'>
+                We will contact you shortly to confirm your booking details.{" "}
+                <span role='img' aria-label='praying-hands'>
+                  🙏
+                </span>
+              </p>
+              <button
+                className='bg-green-500 text-white py-2 px-4 rounded focus:outline-none focus:bg-green-600'
+                onClick={() => setShowPopup(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
