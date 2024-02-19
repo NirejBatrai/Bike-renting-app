@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 
 const app = express();
-const port = 5009;
+const port = 5003;
 
 app.use(cors());
 app.use(express.json({ limit: "25mb" }));
@@ -15,21 +15,19 @@ app.use((req, res, next) => {
 });
 
 //Create a connection to mysql database
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "your_username",
-  password: "",
+const db = mysql.createConnection({
+  host: "database-1.cxkcsec28mhb.ap-southeast-2.rds.amazonaws.com",
+  user: "admin",
+  password: "mysqlAtawsniggaboy",
   database: "bikedata",
 });
 
-//Connect to the mysql database
-connection.connect((err) => {
-  if (err) {
-    console.error("Error connecting to MySQL:", err);
-    return;
-  }
-
-  console.log("Connected to MySQL database");
+app.get("/bikes_details", (req, res) => {
+  const sql = "SELECT * FROM bikes_details";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
 });
 
 function sendEmail({
@@ -41,13 +39,14 @@ function sendEmail({
   bikeName,
   description,
   imageSrc,
+  phoneNumber,
 }) {
   return new Promise((resolve, reject) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: "purampandey1234@gmail.com",
-        pass: "mypss",
+        pass: "edpj ldeh szaa ulyp",
       },
       debug: true,
     });
@@ -61,12 +60,14 @@ function sendEmail({
       
       Customer Name: ${name}
       Customer Email: ${email}
+      Phone Number: ${phoneNumber}
       Date: ${date}
       Time: ${time}
       Message: ${message}
       Bike Name:${bikeName}
       Description of Bike:${description}
       Bike Image:${imageSrc}
+      
     `,
     };
 
@@ -81,8 +82,17 @@ function sendEmail({
 }
 
 app.get("/", (req, res) => {
-  const { name, email, message, date, time, bikeName, description, imageSrc } =
-    req.query;
+  const {
+    name,
+    email,
+    message,
+    date,
+    time,
+    bikeName,
+    description,
+    imageSrc,
+    phoneNumber,
+  } = req.query;
   sendEmail({
     name,
     email,
@@ -92,6 +102,7 @@ app.get("/", (req, res) => {
     bikeName,
     description,
     imageSrc,
+    phoneNumber,
   })
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
