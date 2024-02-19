@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import BikeData from "../BikeData/BikeData"; // Importing bike data from BikeData.js
+import BikeData from "../BikeData/BikeData"; // Importing bike data from BikeData.js
 import { Link } from "react-router-dom";
 
 export default function Pricing() {
@@ -7,13 +7,16 @@ export default function Pricing() {
   const [filteredBikes, setFilteredBikes] = useState([]);
 
   const [bikes, setBikes] = useState([]);
-
   useEffect(() => {
-    fetch("http://localhost:5003/bikes_details")
-      .then((res) => res.json())
-      .then((data) => setBikes(data))
-      .catch((err) => console.log(err));
+    setBikes(BikeData);
   }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5003/bikes_details")
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   // Function to handle search input change
   const handleSearchInputChange = (event) => {
@@ -24,10 +27,14 @@ export default function Pricing() {
 
   // Function to filter bikes based on the search query
   const filterBikes = (query) => {
-    const filtered = bikes.filter((bike) =>
-      bike.bikeName.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredBikes(filtered);
+    try {
+      const filtered = bikes.filter((bike) =>
+        bike.bikeName.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredBikes(filtered);
+    } catch (ex) {
+      console.log(ex);
+    }
   };
 
   const sortedBike = [...bikes].sort((a, b) => a.cc - b.cc);
