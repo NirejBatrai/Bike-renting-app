@@ -12,6 +12,7 @@ const Booking = () => {
   const [time, setTime] = useState();
   const [phone, setPhone] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  const [deliveryOption, setDeliveryOption] = useState("");
 
   const sendMail = () => {
     axios
@@ -26,6 +27,7 @@ const Booking = () => {
           description,
           imageSrc,
           phone,
+          deliveryOption,
         },
       })
       .then(() => {
@@ -48,6 +50,10 @@ const Booking = () => {
     e.preventDefault(); // Prevents the default form submission behavior
     sendMail(); // Call the sendMail function to handle the form submission
     setShowPopup(true); // Show the popup after form submission
+  };
+
+  const handleDeliveryOptionChange = (option) => {
+    setDeliveryOption(option);
   };
 
   const location = useLocation();
@@ -78,6 +84,26 @@ const Booking = () => {
           Motor Bike Booking
         </h1>
         <form className='space-y-6' onSubmit={(e) => handleSubmit(e)}>
+          <div className='flex itmes-center'>
+            <input
+              type='radio'
+              id='pickup'
+              name='deliveryOption'
+              value='Pick up'
+              onChange={() => handleDeliveryOptionChange("Pick up")}
+            />
+            <lable htmlFor='pickup'>Pick up</lable>
+          </div>
+          <div className='flex items-center'>
+            <input
+              type='radio'
+              id='deliver'
+              name='deliveryOption'
+              value='Deliver'
+              onChange={() => handleDeliveryOptionChange("Deliver")}
+            />
+            <label htmlFor='deliver'>Deliver</label>
+          </div>
           <div className='grid grid-cols-2 gap-6'>
             <div>
               <label
@@ -176,7 +202,6 @@ const Booking = () => {
               name='message'
               placeholder='Enter your message here...'
               onChange={(e) => setMessage(e.target.value)}
-              required
             />
           </div>
           <div>
