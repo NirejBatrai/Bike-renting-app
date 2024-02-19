@@ -20,7 +20,7 @@ const Hero = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center'>
           <div
             data-aos='zoom-in'
-            data-aos-duration='1500'
+            data-aos-duration='800'
             data-aos-once='false'
             className='order-1 sm:order-2'
           >
@@ -36,12 +36,12 @@ const Hero = () => {
             </p>
             <h1
               data-aos='fade-up'
-              data-aos-delay='600'
+              data-aos-delay='500'
               className='text-5xl lg:text-7xl font-semibold font-serif'
             >
               Motor Bike Rental
             </h1>
-            <p data-aos='fade-up' data-aos-delay='1000'>
+            <p data-aos='fade-up' data-aos-delay='500'>
               Welcome to our bike rental service! Get ready to explore scenic
               routes with our top-quality bikes. Whether you're a seasoned rider
               or new to biking, we've got you covered. Let's make your biking
@@ -51,11 +51,11 @@ const Hero = () => {
               {" "}
               <button
                 data-aos='fade-up'
-                data-aos-delay='1500'
+                data-aos-delay='500'
                 onClick={() => {
                   AOS.refreshHard();
                 }}
-                className='rounded-md bg-primary hover:bg-primary/80 transition duration-500 py-2 px-6 text-black'
+                className='rounded-md bg-primary hover:bg-primary/80 transition duration-500 py-2 px-6 text-black mt-7'
               >
                 Get Started
               </button>
