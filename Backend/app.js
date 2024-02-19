@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 
 const app = express();
-const port = 5009;
+const port = 5003;
 
 app.use(cors());
 app.use(express.json({ limit: "25mb" }));
