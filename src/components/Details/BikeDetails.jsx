@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import BikeData from "../BikeData/BikeData"; // Importing bike data from BikeData.js
 
 export default function BikeDetails() {
   const location = useLocation();
@@ -8,14 +9,11 @@ export default function BikeDetails() {
   const bikeName = params.get("bikeName");
 
   const [selectedBike, setSelectedBike] = useState(null);
+
   useEffect(() => {
-    fetch("http://localhost:5002/bikes_details")
-      .then((res) => res.json())
-      .then((data) => {
-        const foundBike = data.find((bike) => bike.bikeName === bikeName);
-        setSelectedBike(foundBike);
-      })
-      .catch((err) => console.log(err));
+    // Find the selected bike from BikeData based on bikeName
+    const foundBike = BikeData.find((bike) => bike.bikeName === bikeName);
+    setSelectedBike(foundBike);
   }, [bikeName]);
 
   const scaleIn = useSpring({
@@ -26,6 +24,7 @@ export default function BikeDetails() {
   if (!selectedBike) {
     return <div>Loading....</div>;
   }
+
   const {
     imageSrc,
     description,
