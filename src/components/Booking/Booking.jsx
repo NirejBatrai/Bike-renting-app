@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Book.css";
+import "./Booking.css";
 import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
 
@@ -83,8 +83,11 @@ const Booking = () => {
         <h1 className='text-4xl font-bold mb-4 text-center'>
           Motor Bike Booking
         </h1>
-        <form className='space-y-6' onSubmit={(e) => handleSubmit(e)}>
-          <div className='flex itmes-center'>
+        <form className='form-container' onSubmit={(e) => handleSubmit(e)}>
+
+          <div className="flex items-center justify-center mx-4">
+
+          <div className='flex itmes-center mx-5'>
             <input
               type='radio'
               id='pickup'
@@ -94,6 +97,7 @@ const Booking = () => {
             />
             <lable htmlFor='pickup'>Pick up</lable>
           </div>
+
           <div className='flex items-center'>
             <input
               type='radio'
@@ -104,6 +108,9 @@ const Booking = () => {
             />
             <label htmlFor='deliver'>Deliver</label>
           </div>
+
+          </div>
+
           <div className='grid grid-cols-2 gap-6'>
             <div>
               <label
@@ -204,8 +211,8 @@ const Booking = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
-          <div>
-            <button type='submit' className='button'>
+          <div className="booking-btn-container">
+            <button type='submit' className='button booking-btn'>
               <span> Submit</span>
             </button>
           </div>
