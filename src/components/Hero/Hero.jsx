@@ -7,7 +7,7 @@ import About from "../../components/About/About";
 import Services from "../../components/Services/Services";
 import BikeList from "../../components/BikeList/BikeList";
 import Contact from "../../components/Contact/Contact";
-import Testimonial from "../../components/Testimonial/Testimonial";
+// import Testimonial from "../../components/Testimonial/Testimonial";
 
 const Hero = () => {
   useEffect(() => {
@@ -66,7 +66,7 @@ const Hero = () => {
       <About />
       <Services />
       <BikeList />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Contact />
     </div>
   );
