@@ -32,7 +32,7 @@ const skillsData = [
     link: "#",
     description:
       "Ride with confidence knowing our team of experienced drivers is dedicated to providing exceptional service, guiding you every step of the way.",
-    aosDelay: "1000",
+    aosDelay: "500",
   },
 ];
 
