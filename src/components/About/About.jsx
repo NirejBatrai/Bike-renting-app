@@ -7,7 +7,7 @@ const About = () => {
     <div className='dark:bg-dark bg-slate-100 sm:min-h-[600px] sm:grid sm:place-items-center duration-300'>
       <div className='container'>
         <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center'>
-          <div data-aos='slide-right' data-aos-duration='1500'>
+          <div data-aos='slide-right' data-aos-duration='800'>
             <img
               src={XADV}
               alt=''
@@ -31,7 +31,7 @@ const About = () => {
                 horizons and unforgettable moments on the road!
               </p>
               <Link to='/about'>
-                <button data-aos='fade-down' className='button-outline'>
+                <button data-aos='fade-down' className='button-outline mt-7'>
                   Learn More
                 </button>
               </Link>

@@ -1,0 +1,15 @@
+
+.pricing-btn-container{
+    margin: 20px 10px;
+}
+
+.pricing-btn{
+    margin: 10px 20px;
+    background-color: whitesmoke;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.pricing-btn:hover{
+    background-color: white;
+}
