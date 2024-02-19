@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { useRef, useState } from "react";
 import "./Booking.css";
 import { useSpring, animated } from "react-spring";
 import { useLocation } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 const Booking = () => {
   const [name, setName] = useState();
@@ -14,33 +14,27 @@ const Booking = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [deliveryOption, setDeliveryOption] = useState("");
 
+  const targetForm = useRef();
+
   const sendMail = () => {
-    axios
-      .get("http://localhost:5003/", {
-        params: {
-          name,
-          email,
-          date,
-          time,
-          message,
-          bikeName,
-          description,
-          imageSrc,
-          phone,
-          deliveryOption,
-        },
-      })
-      .then(() => {
-        console.log("succes");
-        setShowPopup(true);
-        setTimeout(() => {
-          setShowPopup(false);
-        }, 1000);
-      })
-      .catch(() => {
-        console.log("failure");
-      });
+    var emailParams = {
+      name,
+      email,
+      date,
+      time,
+      message,
+      bikeName,
+      description,
+      imageSrc,
+      phone,
+      deliveryOption,
+    };
+
+    //TODO: Find a way to send emailParem instead of the targetForm
+
+    emailjs.sendForm("service_i1ij6li", "template_ulav9xn", targetForm.current, "KyG6oROE-jhzT-7b_");
   };
+
   const scaleIn = useSpring({
     transform: "scale(1)",
     from: { transform: "scale(0)" },
@@ -68,80 +62,77 @@ const Booking = () => {
   return (
     <>
       {isFromPricing && (
-        <div className='BikeDetails-container'>
+        <div className="BikeDetails-container">
           <animated.img
             style={scaleIn}
             src={imageSrc}
             alt={bikeName}
-            className='booking-image'
+            className="booking-image"
           />
           <h2>{bikeName}</h2>
           <p>{description}</p>
         </div>
       )}
-      <div className='bg-white p-8 rounded-lg shadow-md'>
-        <h1 className='text-4xl font-bold mb-4 text-center'>
+      <div className="bg-white p-8 rounded-lg shadow-md">
+        <h1 className="text-4xl font-bold mb-4 text-center">
           Motor Bike Booking
         </h1>
-        <form className='form-container' onSubmit={(e) => handleSubmit(e)}>
-
+        <form ref={targetForm} className="form-container" onSubmit={(e) => handleSubmit(e)}>
           <div className="flex items-center justify-center mx-4">
+            <div className="flex itmes-center mx-5">
+              <input
+                type="radio"
+                id="pickup"
+                name="deliveryOption"
+                value="Pick up"
+                onChange={() => handleDeliveryOptionChange("Pick up")}
+              />
+              {/* <lable htmlFor="pickup">Pick up</lable> */}
+            </div>
 
-          <div className='flex itmes-center mx-5'>
-            <input
-              type='radio'
-              id='pickup'
-              name='deliveryOption'
-              value='Pick up'
-              onChange={() => handleDeliveryOptionChange("Pick up")}
-            />
-            <lable htmlFor='pickup'>Pick up</lable>
+            <div className="flex items-center">
+              <input
+                type="radio"
+                id="deliver"
+                name="deliveryOption"
+                value="Deliver"
+                onChange={() => handleDeliveryOptionChange("Deliver")}
+              />
+              <label htmlFor="deliver">Deliver</label>
+            </div>
           </div>
 
-          <div className='flex items-center'>
-            <input
-              type='radio'
-              id='deliver'
-              name='deliveryOption'
-              value='Deliver'
-              onChange={() => handleDeliveryOptionChange("Deliver")}
-            />
-            <label htmlFor='deliver'>Deliver</label>
-          </div>
-
-          </div>
-
-          <div className='grid grid-cols-2 gap-6'>
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <label
-                className='block text-gray-700 font-bold mb-2'
-                htmlFor='name'
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="name"
               >
                 Name
               </label>
               <input
-                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white'
-                id='name'
-                name='name'
-                type='text'
-                placeholder='Your Name'
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your Name"
                 onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
             <div>
               <label
-                className='block text-gray-700 font-bold mb-2'
-                htmlFor='email'
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="email"
               >
                 Email
               </label>
               <input
-                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
-                id='email'
-                name='email'
-                type='email'
-                placeholder='johndoe@example.com'
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="johndoe@example.com"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -149,85 +140,85 @@ const Booking = () => {
           </div>
           <div>
             <label
-              className='block text-gray-700 font-bold mb-2'
-              htmlFor='phone'
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="phone"
             >
               Phone Number
             </label>
             <input
-              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
-              id='phone'
-              name='phone'
-              type='tel'
-              placeholder='Your Phone Number'
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="Your Phone Number"
               onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>
           <div>
             <label
-              className='block text-gray-700 font-bold mb-2'
-              htmlFor='date'
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="date"
             >
               Date
             </label>
             <input
-              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white'
-              id='date'
-              name='date'
-              type='date'
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+              id="date"
+              name="date"
+              type="date"
               onChange={(e) => setDate(e.target.value)}
               required
             />
           </div>
           <div>
             <label
-              className='block text-gray-700 font-bold mb-2'
-              htmlFor='time'
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="time"
             >
               Time
             </label>
             <input
-              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
-              id='time'
-              name='time'
-              type='time'
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              id="time"
+              name="time"
+              type="time"
               onChange={(e) => setTime(e.target.value)}
               required
             />
           </div>
           <div>
             <label
-              className='block text-gray-700 font-bold mb-2'
-              htmlFor='message'
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="message"
             >
               Message
             </label>
             <textarea
-              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
-              id='message'
-              name='message'
-              placeholder='Enter your message here...'
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              id="message"
+              name="message"
+              placeholder="Enter your message here..."
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
           <div className="booking-btn-container">
-            <button type='submit' className='button booking-btn'>
+            <button type="submit" className="button booking-btn">
               <span> Submit</span>
             </button>
           </div>
         </form>
       </div>
       {showPopup && (
-        <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50'>
-          <div className='bg-white p-8 rounded-lg shadow-lg'>
-            <div className='text-center'>
-              <h2 className='text-xl font-bold mb-4 text-green-500'>
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="text-center">
+              <h2 className="text-xl font-bold mb-4 text-green-500">
                 Thank You for Booking! 😃
               </h2>
-              <p className='text-gray-700 mb-4'>
+              <p className="text-gray-700 mb-4">
                 We will contact you shortly to confirm your booking details.{" "}
-                <span role='img' aria-label='praying-hands'>
+                <span role="img" aria-label="praying-hands">
                   🙏
                 </span>
               </p>
