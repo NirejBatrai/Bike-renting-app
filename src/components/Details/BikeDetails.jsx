@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import "./BikeDetails.css";
 import BikeData from "../BikeData/BikeData"; // Importing bike data from BikeData.js
 
 export default function BikeDetails() {
@@ -19,10 +20,11 @@ export default function BikeDetails() {
   const scaleIn = useSpring({
     transform: "scale(1)",
     from: { transform: "scale(0)" },
+    config: { duration: 500 } 
   });
 
   if (!selectedBike) {
-    return <div>Loading....</div>;
+    return <div>Please....</div>;
   }
 
   const {
@@ -47,8 +49,7 @@ export default function BikeDetails() {
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen BikeDetails-container'>
-      <h1 className='text-xl font-bold text-gray-900 mb-2'>Bike Details</h1>
-      <div className='booking-image mb-4'>
+      <div className='booking-image mb-5'>
         <animated.img
           style={scaleIn}
           src={imageSrc}
