@@ -1,0 +1,30 @@
+
+.card-container{
+}
+
+.card-container img{
+}
+
+.card-container h2{
+    font-size: 2rem;
+}
+
+.card-container p{
+    font-size: 1rem;
+}
+
+.pricing-btn-container{
+    margin: 20px 5px;
+}
+
+.pricing-btn{
+    margin: 1rem 0.4rem;
+    background-color: whitesmoke;
+    padding: 0.4rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+.pricing-btn:hover{
+    background-color: white;
+}
