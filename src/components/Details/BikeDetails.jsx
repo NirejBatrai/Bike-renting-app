@@ -20,7 +20,7 @@ export default function BikeDetails() {
   const scaleIn = useSpring({
     transform: "scale(1)",
     from: { transform: "scale(0)" },
-    config: { duration: 500 } 
+    config: { duration: 500 },
   });
 
   if (!selectedBike) {
@@ -57,13 +57,12 @@ export default function BikeDetails() {
           className='w-full h-full object-cover'
         />
       </div>
+
+      <p className='description'>{description}</p>
+
       <h2 className='font-bold text-lg text-gray-900 mb-2 '>{bikeName}</h2>
       <table className='table-auto max-w-s  ml-20 mr-20'>
         <tbody>
-          <tr>
-            <td className='border px-2 py-1'>Description</td>
-            <td className='border px-2 py-1'>{description}</td>
-          </tr>
           <tr>
             <td className='border px-2 py-1'>Price (฿)</td>
             <td className='border px-2 py-1'>{price}</td>
