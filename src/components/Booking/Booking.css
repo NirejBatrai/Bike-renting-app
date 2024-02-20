@@ -16,11 +16,11 @@
 .BikeDetails-container p {
   max-width: 700px; /* Increased max-width for better readability */
   margin: 0 auto; /* Center the paragraph horizontally */
-  font-size: 1.2rem; /* Adjust the font size as needed */
+  font-size: 0.9rem; /* Adjust the font size as needed */
   line-height: 1.5; /* Adjust the line height for better spacing */
   color: #131010; /* Dark gray color for text */
   text-align: justify; /* Justify the text for better alignment */
-  padding: 0 20px; /* Add padding for better spacing */
+  padding: 0 20px 30px 20px; /* Add padding for better spacing */
 }
 
 .BikeDetails-container h2 {
@@ -69,9 +69,14 @@
   margin-top: 20px; /* Rounded border corners */
 }
 
+.middle-container{
+  margin: 0 20%;
+}
+
 
 .form-container{
-  padding: 20px 20%;
+  padding: 0;
+  width: 100%;
 }
 
 .booking-btn-container{
@@ -80,6 +85,12 @@
   margin-top: 40px;
 }
 
-.booking-btn{
+.booking-container{
+  background-color: white;
+}
 
+@media (max-width: 768px) {
+  .middle-container{
+    margin: 10px;
+  }
 }
