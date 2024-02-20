@@ -1,15 +1,17 @@
 import React from "react";
 import Tmax from "../../assets/Tmax.png";
 import XADV from "../../assets/XADV.png";
+import KTM450 from "../../assets/KTM-450-DirtBike.png";
+import Kawasaki_dirtbike from "../../assets/Dirt-Bike-Kawasaki.png";
 
 import PCX from "../../assets/PCX.png";
 import { Link } from "react-router-dom";
 
 const bikeList = [
   {
-    name: "Tamx",
-    price: 1500,
-    image: Tmax,
+    name: "Kawasaki DirtBike",
+    price: 1000,
+    image: Kawasaki_dirtbike,
     aosDelay: "0",
   },
   {
@@ -19,9 +21,9 @@ const bikeList = [
     aosDelay: "500",
   },
   {
-    name: "PCX",
-    price: 300,
-    image3: PCX,
+    name: "Dirt Bike",
+    price: 800,
+    image3: KTM450,
     aosDelay: "1000",
   },
 ];
@@ -66,8 +68,8 @@ const CarList = () => {
                 <div className='space-y-2'>
                   <h1 className='text-primary font-semibold'>{data.name}</h1>
                   <div className='flex justify-between items-center text-xl font-semibold'>
-                  <Link to='/pricing'>  ฿{data.price}</Link>
-                  <Link to='/pricing'>Details</Link>
+                    <Link to='/pricing'> ฿{data.price}</Link>
+                    <Link to='/pricing'>Details</Link>
                   </div>
                 </div>
                 <p className='text-xl font-semibold absolute top-0 left-3'>

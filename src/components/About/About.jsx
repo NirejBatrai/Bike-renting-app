@@ -1,5 +1,6 @@
 import React from "react";
 import XADV from "../../assets/XADV.png";
+import KTM450 from "../../assets/KTM-450-DirtBike.png";
 import { Link } from "react-router-dom";
 
 const About = () => {
@@ -9,7 +10,7 @@ const About = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center'>
           <div data-aos='slide-right' data-aos-duration='800'>
             <img
-              src={XADV}
+              src={KTM450}
               alt=''
               className='sm:scale-125 sm:-translate-x-11 max-h-[300px] drop-shadow-[2px_10px_6px_rgba(0,0,0,0.50)]'
             />
