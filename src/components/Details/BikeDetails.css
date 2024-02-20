@@ -1,13 +1,19 @@
-
-.booking-image{
-    border: none;
+.booking-image {
+  border: none;
 }
 
+.description {
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.BikeDetails-container table {
+  width: 90%;
+}
 
 /* For screens smaller than 600 pixels wide */
 @media only screen and (min-width: 500px) {
-    .BikeDetails-container table{
-        width: 50%;
-    }
+  .BikeDetails-container table {
+    width: 50%;
   }
-  
+}
