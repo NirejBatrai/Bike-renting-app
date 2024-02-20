@@ -63,7 +63,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <About />
+      {/* <About /> */}
       <Services />
       <BikeList />
       {/* <Testimonial /> */}
