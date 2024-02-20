@@ -1,15 +1,26 @@
 
-.pricing-btn-container{
-    margin: 20px 10px;
+.pricing-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.pricing-btn{
-    margin: 10px 20px;
-    background-color: whitesmoke;
-    padding: 5px 20px;
-    border-radius: 20px;
+.card-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.2rem 0.5rem;
+    /* grid grid-cols-3 gap-8  */
 }
 
-.pricing-btn:hover{
-    background-color: white;
+.searchbar{
+    width: 20rem;
 }
+
+
+@media (max-width: 768px) {
+    .card-container{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }

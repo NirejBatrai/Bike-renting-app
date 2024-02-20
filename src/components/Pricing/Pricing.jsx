@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BikeData from "../BikeData/BikeData"; // Importing bike data from BikeData.js
 import "./Pricing.css";
-import { Link } from "react-router-dom";
+import Card from "../Card/Card"
 
 export default function Pricing() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,13 +11,6 @@ export default function Pricing() {
   useEffect(() => {
     setBikes(BikeData);
   }, []);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5003/bikes_details")
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data))
-  //     .catch((err) => console.log(err));
-  // }, []);
 
   // Function to handle search input change
   const handleSearchInputChange = (event) => {
@@ -41,12 +34,12 @@ export default function Pricing() {
   const sortedBike = [...bikes].sort((a, b) => a.cc - b.cc);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 pricing-container">
       <div className="flex items-center justify-center mt-6 mb-8">
         <input
           type="text"
           name="text"
-          className="border border-gray-600 py-2 px-4 rounded-md w-1/2"
+          className="border border-gray-600 py-1 px-4 rounded-md w-1/1 searchbar"
           placeholder="Search for the bike..."
           value={searchQuery}
           onChange={handleSearchInputChange}
@@ -55,131 +48,13 @@ export default function Pricing() {
 
       <h1 className="text-3xl font-bold mb-4">Discover Our Exclusive Models</h1>
 
-      <div className="grid grid-cols-3 gap-8">
+      <div className="card-container">
         {searchQuery !== ""
           ? filteredBikes.map((bike, index) => (
-              <div
-                key={index}
-                className="border border-gray-300 p-4 rounded-md flex flex-col items-center"
-              >
-                {/* Bike Image */}
-                <div className="w-32 h-32 mb-4 overflow-hidden">
-                  <img
-                    src={bike.imageSrc}
-                    alt={bike.bikeName}
-                    className={
-                      bike.bikeName === "Tmax" ||
-                      bike.bikeName === "Nmax Yamaha" ||
-                      bike.bikeName === "Harley-Davidson"
-                        ? "w-full h-auto max-h-24"
-                        : "w-full h-full object-cover"
-                    }
-                  />
-                </div>
-                {/* Bike Name */}
-                <h2 className="text-xl font-bold text-center mb-2">
-                  {bike.bikeName}
-                </h2>
-                {/* Bike Price */}
-                <p className="text-lg font-semibold">
-                  Price: ฿{bike.price}/Day
-                </p>
-                {/* Engine Displacement */}
-                <p className="text-sm">Engine Displacement: {bike.cc} cc</p>
-                {/* Link to Bike Details */}
-
-                <div className="pricing-btn-container">
-                  <Link
-                    to={{
-                      pathname: "/bike-details",
-                      search: `?imageSrc=${encodeURIComponent(
-                        bike.imageSrc
-                      )}&bikeName=${encodeURIComponent(
-                        bike.bikeName
-                      )}&description=${encodeURIComponent(bike.description)}`,
-                    }}
-                    className="pricing-btn"
-                  >
-                    Details
-                  </Link>
-                  {/* Add to Booking Button */}
-                  <Link
-                    to={{
-                      pathname: "/booking",
-                      search: `?imageSrc=${encodeURIComponent(
-                        bike.imageSrc
-                      )}&bikeName=${encodeURIComponent(
-                        bike.bikeName
-                      )}&description=${encodeURIComponent(bike.description)}`,
-                    }}
-                    className="pricing-btn"
-                  >
-                    Add to booking
-                  </Link>
-                </div>
-              </div>
+              <Card bike={bike} key={index}/>
             ))
           : sortedBike.map((bike, index) => (
-              <div
-                key={index}
-                className="border border-gray-300 p-4 rounded-md flex flex-col items-center"
-              >
-                {/* Bike Image */}
-                <div className="w-32 h-32 mb-4 overflow-hidden">
-                  <img
-                    src={bike.imageSrc}
-                    alt={bike.bikeName}
-                    className={
-                      bike.bikeName === "Tmax" ||
-                      bike.bikeName === "Nmax Yamaha" ||
-                      bike.bikeName === "Harley-Davidson"
-                        ? "w-full h-auto max-h-24"
-                        : "w-full h-full object-cover"
-                    }
-                  />
-                </div>
-                {/* Bike Name */}
-                <h2 className="text-xl font-bold text-center mb-2">
-                  {bike.bikeName}
-                </h2>
-                {/* Bike Price */}
-                <p className="text-lg font-semibold">
-                  Price: ฿{bike.price}/Day
-                </p>
-                {/* Engine Displacement */}
-                <p className="text-sm">Engine Displacement: {bike.cc} cc</p>
-                {/* Link to Bike Details */}
-
-                <div className="pricing-btn-container">
-                  <Link
-                    to={{
-                      pathname: "/bike-details",
-                      search: `?imageSrc=${encodeURIComponent(
-                        bike.imageSrc
-                      )}&bikeName=${encodeURIComponent(
-                        bike.bikeName
-                      )}&description=${encodeURIComponent(bike.description)}`,
-                    }}
-                    className="pricing-btn"
-                  >
-                    Details
-                  </Link>
-                  {/* Add to Booking Button */}
-                  <Link
-                    to={{
-                      pathname: "/booking",
-                      search: `?imageSrc=${encodeURIComponent(
-                        bike.imageSrc
-                      )}&bikeName=${encodeURIComponent(
-                        bike.bikeName
-                      )}&description=${encodeURIComponent(bike.description)}`,
-                    }}
-                    className="pricing-btn"
-                  >
-                    Add to booking
-                  </Link>
-                </div>
-              </div>
+              <Card bike={bike} key={index}/>
             ))}
       </div>
     </div>
