@@ -31,11 +31,11 @@ const About = () => {
                 cyclist or an adventure seeker, join us as we pedal towards new
                 horizons and unforgettable moments on the road!
               </p>
-              <Link to='/about'>
+              {/* <Link to='/about'>
                 <button data-aos='fade-down' className='button-outline mt-7'>
                   Learn More
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
