@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./Booking.css";
 import { useSpring, animated } from "react-spring";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate  } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 const Booking = () => {
@@ -12,12 +12,14 @@ const Booking = () => {
   const [time, setTime] = useState();
   const [phone, setPhone] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-  const [deliveryOption, setDeliveryOption] = useState("");
+  const [deliveryOption, setDeliveryOption] = useState("pickup");
 
-  const targetForm = useRef();
+  const navigate = useNavigate();
 
-  const sendMail = () => {
-    var emailParams = {
+
+  function sendMail() {
+
+    const templateParams = {
       name,
       email,
       date,
@@ -28,12 +30,18 @@ const Booking = () => {
       imageSrc,
       phone,
       deliveryOption,
-    };
-
-    //TODO: Find a way to send emailParem instead of the targetForm
-
-    emailjs.sendForm("service_i1ij6li", "template_ulav9xn", targetForm.current, "KyG6oROE-jhzT-7b_");
-  };
+    }
+  
+    // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_USER_ID' with actual values
+   emailjs.send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLET_ID, templateParams, import.meta.env.VITE_PUBLIC_KEY)
+      .then((response) => {
+        console.log('Email sent successfully:', response);
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
+  }
+  
 
   const scaleIn = useSpring({
     transform: "scale(1)",
@@ -48,6 +56,12 @@ const Booking = () => {
 
   const handleDeliveryOptionChange = (option) => {
     setDeliveryOption(option);
+  };
+
+
+  const handlePopupClosed = () =>{
+    setShowPopup(false);
+    navigate('/pricing');
   };
 
   const location = useLocation();
@@ -77,20 +91,23 @@ const Booking = () => {
         <h1 className="text-4xl font-bold mb-4 text-center">
           Motor Bike Booking
         </h1>
-        <form ref={targetForm} className="form-container" onSubmit={(e) => handleSubmit(e)}>
-          <div className="flex items-center justify-center mx-4">
+        <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
+
+          <div className="flex items-center justify-center bg-gray-200 py-2">
+
             <div className="flex itmes-center mx-5">
               <input
                 type="radio"
                 id="pickup"
                 name="deliveryOption"
                 value="Pick up"
+                checked
                 onChange={() => handleDeliveryOptionChange("Pick up")}
               />
-              {/* <lable htmlFor="pickup">Pick up</lable> */}
+              <label className="ml-1" htmlFor="deliver">Pick up</label>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center mx-5">
               <input
                 type="radio"
                 id="deliver"
@@ -98,8 +115,9 @@ const Booking = () => {
                 value="Deliver"
                 onChange={() => handleDeliveryOptionChange("Deliver")}
               />
-              <label htmlFor="deliver">Deliver</label>
+              <label className="ml-1" htmlFor="deliver">Deliver</label>
             </div>
+
           </div>
 
           <div className="grid grid-cols-2 gap-6">
@@ -198,6 +216,7 @@ const Booking = () => {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="message"
               name="message"
+              rows={5}
               placeholder="Enter your message here..."
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -222,12 +241,12 @@ const Booking = () => {
                   🙏
                 </span>
               </p>
-              {/* <button
+              <button
                 className='bg-green-500 text-white py-2 px-4 rounded focus:outline-none focus:bg-green-600'
-                onClick={() => setShowPopup(false)}
+                onClick={() => handlePopupClosed()}
               >
                 Close
-              </button> */}
+              </button>
             </div>
           </div>
         </div>
