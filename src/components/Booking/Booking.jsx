@@ -74,7 +74,7 @@ const Booking = () => {
   const isFromPricing = imageSrc && bikeName && description;
 
   return (
-    <>
+    <div className="booking-container">
       {isFromPricing && (
         <div className="BikeDetails-container">
           <animated.img
@@ -87,7 +87,7 @@ const Booking = () => {
           <p>{description}</p>
         </div>
       )}
-      <div className="bg-white p-8 rounded-lg shadow-md">
+      <div className="p-8 rounded-lg shadow-md middle-container">
         <h1 className="text-4xl font-bold mb-4 text-center">
           Motor Bike Booking
         </h1>
@@ -251,7 +251,7 @@ const Booking = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
