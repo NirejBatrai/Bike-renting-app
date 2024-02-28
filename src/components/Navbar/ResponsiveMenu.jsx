@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { FaUserCircle } from "react-icons/fa";
 
 import { Navlinks } from "./Navbar";
